@@ -1,2 +1,155 @@
+.pricelist-page-container {
+  padding: 20px;
+  padding-top: 80px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
 
+.pricelist-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
 
+.pricelist-content h2 {
+  text-align: center;
+  color: #000;
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 2em;
+}
+
+.table-wrapper {
+  overflow-x: auto; /* Allows horizontal scrolling on small screens */
+  max-height: 70vh; /* Limits height and enables vertical scroll */
+  overflow-y: auto;
+}
+
+.pricelist-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pricelist-table th,
+.pricelist-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap; /* Prevents text wrapping in cells */
+}
+
+.pricelist-table th {
+  background-color: #2c3e50;
+  color: white;
+  font-weight: bold;
+  position: sticky; /* Makes headers stick during vertical scroll */
+  top: 0;
+  z-index: 10;
+}
+
+.pricelist-table td {
+  color: #000;
+}
+
+.pricelist-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.pricelist-table input {
+    width: 100%;
+    min-width: 150px; /* Ensures inputs don't get too small */
+    border: 1px solid transparent;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: inherit;
+    font-size: 1em;
+    box-sizing: border-box;
+    color: #000;
+}
+
+.pricelist-table input:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: #fff;
+}
+
+.language-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px; 
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.language-toggle img {
+  width: 40px;
+  height: 27px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.language-toggle .active-flag {
+  border-color: #f39c12;
+  transform: scale(1.1);
+}
+
+.language-toggle img:hover:not(.active-flag) {
+  opacity: 0.8;
+}
+
+/* Responsive Styles */
+/* Tablet View (landscape) */
+@media (max-width: 1024px) {
+    .in-price-col {
+        display: none; /* Hide 'In Price' column */
+    }
+}
+
+/* Mobile View (portrait) */
+@media (max-width: 600px) {
+    .pricelist-table thead {
+        display: none; /* Hide table headers */
+    }
+    .pricelist-table tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .pricelist-table td {
+        display: flex; /* Use flexbox for alignment */
+        justify-content: space-between; /* Pushes label and input apart */
+        align-items: center;
+        text-align: right;
+        border-bottom: 1px dotted #ccc;
+        position: relative;
+        padding: 10px;
+    }
+    .pricelist-table td:last-child {
+        border-bottom: 0;
+    }
+    .pricelist-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-align: left;
+        color: #000;
+    }
+    .pricelist-table input {
+        width: 60%; /* Adjust input width for mobile */
+        text-align: right;
+    }
+    .in-price-col, .price-col {
+        display: flex; /* Ensure they display correctly in mobile view */
+    }
+}

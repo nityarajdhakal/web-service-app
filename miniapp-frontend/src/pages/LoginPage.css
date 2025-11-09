@@ -20,7 +20,7 @@ body {
 }
 
 
-.login-container {
+.login-page-container {
   display: flex;
   align-items: center; 
   justify-content: center; 
@@ -125,7 +125,7 @@ body {
 
 .login-box h2 {
   margin-bottom: 30px;
-  color: #2c3e50;
+  color: #000;
   font-size: 1.8em;
 }
 
@@ -146,6 +146,7 @@ body {
   font-size: 16px;
   box-sizing: border-box;
   transition: border-color 0.2s;
+  color: #000;
 }
 
 .input-group input:focus {
@@ -185,6 +186,17 @@ button:hover {
 
 button:active {
   transform: scale(0.99);
+}
+
+.error-message {
+  color: #c0392b;
+  background-color: #fdd;
+  border: 1px solid #c0392b;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  text-align: center;
 }
 
 

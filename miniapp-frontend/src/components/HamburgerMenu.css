@@ -1,0 +1,52 @@
+.top-left-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 20;
+}
+
+.diamond-logo {
+  width: 40px;
+  height: auto;
+}
+
+.hamburger {
+  font-size: 30px;
+  cursor: pointer;
+  color: #000;
+  user-select: none;
+}
+
+.menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.menu.open {
+  display: flex;
+}
+
+.menu a,
+.menu a:visited {
+  color: white;
+  text-decoration: none;
+  padding: 5px 0;
+  white-space: nowrap;
+  transition: color 0.2s;
+  display: block;
+}
+
+.menu a:hover {
+  color: #3498db;
+}
+

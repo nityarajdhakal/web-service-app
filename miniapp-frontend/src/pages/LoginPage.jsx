@@ -1,52 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
+import HamburgerMenu from "../components/HamburgerMenu";
+
+const API_BASE_URL = "http://localhost:5000/api";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [language, setLanguage] = useState("EN");
   const [showPassword, setShowPassword] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [email, setEmail] = useState("test@example.com"); // Pre-filled for convenience
+  const [password, setPassword] = useState("password123"); // Pre-filled for convenience
+  const [texts, setTexts] = useState({});
+  const [error, setError] = useState('');
 
- 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  
-  const [texts, setTexts] = useState({
-    EN: {
-      email: "Email",
-      password: "Password",
-      login: "Login",
-      menu1: "Home",
-      menu2: "Contact",
-    },
-    SE: {
-      email: "E-post",
-      password: "Lösenord",
-      login: "Logga in",
-      menu1: "Hem",
-      menu2: "Kontakt",
-    },
-  });
-
-  
   useEffect(() => {
     const fetchTranslations = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:5000/api/translations?page=login&lang=${language.toLowerCase()}`
-        );
+        // Convert EN to 'en' and SE to 'sv' (Swedish language code)
+        const langCode = language === "SE" ? "sv" : "en";
+        const res = await fetch(`${API_BASE_URL}/translations?page=login&lang=${langCode}`);
         const data = await res.json();
         if (data.success) {
-          setTexts((prev) => ({
-            ...prev,
-            [language]: {
-              email: data.data.emailLabel || prev[language].email,
-              password: data.data.passwordLabel || prev[language].password,
-              login: data.data.loginButton || prev[language].login,
-              menu1: prev[language].menu1,
-              menu2: prev[language].menu2,
-            },
-          }));
+          setTexts(data.data);
+        } else {
+          console.error("Failed to fetch translations:", data.message);
         }
       } catch (err) {
         console.error("Error fetching translations:", err);
@@ -55,59 +33,38 @@ const LoginPage = () => {
     fetchTranslations();
   }, [language]);
 
- 
-  const togglePassword = () => setShowPassword(!showPassword);
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-
-  
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError(''); // Clear previous errors
     if (!email || !password) {
-      alert("Please enter email and password");
+      setError("Please enter both email and password.");
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
-      console.log("Login response:", data);
 
       if (data.success) {
-        alert(`Login successful! Welcome, ${data.data.name}`);
-        localStorage.setItem("token", data.accessToken); 
-       
-        window.location.href = "/pricelist";
+        localStorage.setItem("token", data.accessToken);
+        navigate("/home"); // Use navigate for SPA navigation
       } else {
-        alert("Login failed: " + data.message);
+        setError(data.message || "Login failed. Please check your credentials.");
       }
     } catch (err) {
       console.error("Error logging in:", err);
-      alert("Server error. Check backend console.");
+      setError("An error occurred. Please try again later.");
     }
   };
 
   return (
-    <div className="login-container">
-      
-      <div className="top-left">
-        <img
-          src="https://storage.123fakturera.se/public/icons/diamond.png"
-          alt="diamond"
-          className="diamond"
-        />
-        <div className="hamburger" onClick={toggleMenu}>
-          &#9776;
-        </div>
-        <div className={`menu ${menuOpen ? "open" : ""}`}>
-          <a href="#">{texts[language].menu1}</a>
-          <a href="#">{texts[language].menu2}</a>
-        </div>
-      </div>
-
+    <div className="login-page-container">
+      <HamburgerMenu texts={texts} page="login" />
       
       <div className="language-toggle">
         <img
@@ -124,31 +81,33 @@ const LoginPage = () => {
         />
       </div>
 
-     
       <div className="login-box">
-        <h2>{texts[language].login}</h2>
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder={texts[language].email}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="input-group">
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder={texts[language].password}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <span className="eye-icon" onClick={togglePassword}>
-            👁
-          </span>
-        </div>
-        <button type="button" onClick={handleLogin}>
-          {texts[language].login}
-        </button>
+        <h2>{texts.loginTitle || 'Login'}</h2>
+        <form onSubmit={handleLogin}>
+          <div className="input-group">
+            <input
+              type="email"
+              placeholder={texts.emailPlaceholder || 'Email'}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder={texts.passwordPlaceholder || 'Password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? "🙈" : "👁️"}
+            </span>
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          <button type="submit">{texts.loginButton || 'Login'}</button>
+        </form>
       </div>
     </div>
   );
