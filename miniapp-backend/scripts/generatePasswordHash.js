@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 
-// Get password from command line argument or use default
+
 const password = process.argv[2] || 'password123';
 
 console.log('Generating password hash...\n');

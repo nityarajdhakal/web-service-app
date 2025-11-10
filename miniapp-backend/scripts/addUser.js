@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const { Pool } = require('pg');
 require('dotenv').config();
 
-// Get command line arguments
 const args = process.argv.slice(2);
 
 if (args.length < 3) {
@@ -14,7 +13,7 @@ if (args.length < 3) {
 
 const [name, email, password] = args;
 
-// Create database connection
+
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
@@ -25,26 +24,26 @@ const pool = new Pool({
 
 async function addUser() {
   try {
-    // Check if user already exists
+    
     const existingUser = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
     
     if (existingUser.rows.length > 0) {
-      console.log(`❌ Error: User with email ${email} already exists!`);
+      console.log(` Error: User with email ${email} already exists!`);
       process.exit(1);
     }
 
-    // Hash the password
+   
     console.log('Hashing password...');
     const hashedPassword = await bcrypt.hash(password, 10);
     
-    // Insert user into database
+    
     const result = await pool.query(
       'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id, name, email',
       [name, email, hashedPassword]
     );
 
     const newUser = result.rows[0];
-    console.log('\n✅ User added successfully!');
+    console.log('\n User added successfully!');
     console.log(`\nUser Details:`);
     console.log(`  ID: ${newUser.id}`);
     console.log(`  Name: ${newUser.name}`);
@@ -55,7 +54,7 @@ async function addUser() {
     console.log(`  Password: ${password}`);
     
   } catch (err) {
-    console.error('❌ Error adding user:', err.message);
+    console.error('Error adding user:', err.message);
     process.exit(1);
   } finally {
     await pool.end();

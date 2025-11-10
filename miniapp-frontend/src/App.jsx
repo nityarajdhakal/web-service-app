@@ -5,10 +5,10 @@ import TermsPage from './pages/TermsPage';
 import PricelistPage from './pages/PricelistPage';
 import './App.css';
 
-// This component protects routes that require authentication
+
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');
-  // If a token exists, allow access. Otherwise, redirect to the login page.
+  
   return token ? children : <Navigate to="/login" />;
 };
 
@@ -34,7 +34,7 @@ function App() {
             </PrivateRoute>
           } 
         />
-        {/* Root path redirects to /home if authenticated, otherwise to /login */}
+        
         <Route path="/" element={<Navigate to="/home" />} />
         {/* Any other path will redirect to the login page */}
         <Route path="*" element={<Navigate to="/login" />} />

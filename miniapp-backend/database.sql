@@ -1,4 +1,4 @@
--- Create the users table
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL
 );
 
--- Create the products table
+
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
     product_name VARCHAR(255) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE products (
     price NUMERIC(10, 2) NOT NULL
 );
 
--- Create the translations table
+
 CREATE TABLE translations (
     id SERIAL PRIMARY KEY,
     page VARCHAR(50) NOT NULL,

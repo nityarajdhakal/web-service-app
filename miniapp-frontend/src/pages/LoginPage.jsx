@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import HamburgerMenu from "../components/HamburgerMenu";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+
 
 const API_BASE_URL = "http://localhost:5000/api";
 
@@ -9,15 +11,15 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [language, setLanguage] = useState("EN");
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("test@example.com"); // Pre-filled for convenience
-  const [password, setPassword] = useState("password123"); // Pre-filled for convenience
+  const [email, setEmail] = useState("test@example.com"); 
+  const [password, setPassword] = useState("password123"); 
   const [texts, setTexts] = useState({});
   const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchTranslations = async () => {
       try {
-        // Convert EN to 'en' and SE to 'sv' (Swedish language code)
+        
         const langCode = language === "SE" ? "sv" : "en";
         const res = await fetch(`${API_BASE_URL}/translations?page=login&lang=${langCode}`);
         const data = await res.json();
@@ -35,7 +37,7 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(''); // Clear previous errors
+    setError(''); 
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
@@ -52,7 +54,7 @@ const LoginPage = () => {
 
       if (data.success) {
         localStorage.setItem("token", data.accessToken);
-        navigate("/home"); // Use navigate for SPA navigation
+        navigate("/pricelist"); 
       } else {
         setError(data.message || "Login failed. Please check your credentials.");
       }
@@ -102,8 +104,8 @@ const LoginPage = () => {
               required
             />
             <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? "🙈" : "👁️"}
-            </span>
+  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+</span>
           </div>
           {error && <p className="error-message">{error}</p>}
           <button type="submit">{texts.loginButton || 'Login'}</button>

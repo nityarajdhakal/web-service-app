@@ -6,9 +6,13 @@ const HamburgerMenu = ({ texts, page }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        navigate('/login');
+    
+    const handleLogoutAndGoHome = (e) => {
+        e.preventDefault(); 
+        
+        localStorage.removeItem("token"); 
+        navigate('/login'); 
+        setMenuOpen(false); 
     };
 
     return (
@@ -22,11 +26,17 @@ const HamburgerMenu = ({ texts, page }) => {
                 &#9776;
             </div>
             <div className={`menu ${menuOpen ? "open" : ""}`}>
-                {/* Using Link for SPA navigation */}
-                <Link to="/home">{texts.menuHome || 'Home'}</Link>
-                <Link to="#">{texts.menuContact || 'Contact'}</Link>
-                <Link to="/terms">Terms</Link>
-                {page !== 'login' && <a href="#" onClick={(e) => { e.preventDefault(); handleLogout(); }}>Logout</a>}
+                
+                <a href="#" onClick={handleLogoutAndGoHome}>{texts.menuHome || 'Home'}</a>
+
+                
+                <Link to="#" onClick={() => setMenuOpen(false)}>{texts.menuContact || 'Contact'}</Link>
+                
+               
+                <Link to="/terms" onClick={() => setMenuOpen(false)}>Terms</Link>
+                
+                
+                {page !== 'login' && <a href="#" onClick={handleLogoutAndGoHome}>Logout</a>}
             </div>
         </div>
     );

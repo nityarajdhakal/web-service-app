@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { setToken } from "../features/auth/authSlice"; // adjust if you have different path
+import { setToken } from "../features/auth/authSlice"; 
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -17,7 +17,7 @@ function Login() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    // fetch translations
+    
     axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/translations?page=login&lang=${lang}`)
       .then(res => {
         if (res.data && res.data.data) setTexts(res.data.data);
@@ -38,7 +38,7 @@ function Login() {
       if (data.success) {
         toast.success(texts.loginSuccess || "Login successful!");
         dispatch(setToken({ token: data.accessToken, user: data.data }));
-        // store token in localStorage too
+        
         localStorage.setItem("accessToken", data.accessToken);
         navigate("/pricelist");
       } else {
