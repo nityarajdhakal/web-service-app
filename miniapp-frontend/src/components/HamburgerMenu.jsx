@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./HamburgerMenu.css";
 
 const HamburgerMenu = ({ texts, page }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
 
-    
     const handleLogoutAndGoHome = (e) => {
-        e.preventDefault(); 
-        
-        localStorage.removeItem("token"); 
-        navigate('/login'); 
-        setMenuOpen(false); 
+        if (e) e.preventDefault();
+        localStorage.removeItem("token");
+        navigate('/login');
+        setMenuOpen(false);
+    };
+
+    const handleNavigateTo = (path, e) => {
+        if (e) e.preventDefault();
+        navigate(path);
+        setMenuOpen(false);
     };
 
     return (
@@ -21,22 +25,33 @@ const HamburgerMenu = ({ texts, page }) => {
                 src="https://storage.123fakturera.se/public/icons/diamond.png"
                 alt="diamond logo"
                 className="diamond-logo"
+                onError={(e) => {
+                    console.warn('Failed to load diamond logo:', e);
+                    // Fallback: use a simple text or icon
+                    e.target.style.display = 'none';
+                }}
             />
             <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-                &#9776;
+                ☰
             </div>
             <div className={`menu ${menuOpen ? "open" : ""}`}>
-                
-                <a href="#" onClick={handleLogoutAndGoHome}>{texts.menuHome || 'Home'}</a>
+                <button onClick={handleLogoutAndGoHome} style={{background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', width: '100%', padding: '8px'}}>
+                    {texts.menuHome || 'Home'}
+                </button>
 
-                
-                <Link to="#" onClick={() => setMenuOpen(false)}>{texts.menuContact || 'Contact'}</Link>
-                
-               
-                <Link to="/terms" onClick={() => setMenuOpen(false)}>Terms</Link>
-                
-                
-                {page !== 'login' && <a href="#" onClick={handleLogoutAndGoHome}>Logout</a>}
+                <button onClick={(e) => handleNavigateTo('/contact', e)} style={{background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', width: '100%', padding: '8px'}}>
+                    {texts.menuContact || 'Contact'}
+                </button>
+
+                <button onClick={(e) => handleNavigateTo('/terms', e)} style={{background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', width: '100%', padding: '8px'}}>
+                    Terms
+                </button>
+
+                {page !== 'login' && (
+                    <button onClick={handleLogoutAndGoHome} style={{background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', width: '100%', padding: '8px'}}>
+                        Logout
+                    </button>
+                )}
             </div>
         </div>
     );
