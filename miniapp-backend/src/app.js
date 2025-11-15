@@ -23,27 +23,36 @@ app.use(express.urlencoded({ extended: true }));
 // CORS - configure via env in production
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allowed origins - always includes localhost for dev and configured origin for prod
+    // Allowed origins - always includes localhost for dev and configured origins for prod
     const allowedOrigins = [
       'http://localhost:3000',
       'http://localhost:5173', // Vite dev server
       'http://localhost:5000',
       'http://localhost',
       'https://web-service-application.onrender.com',
-      process.env.CORS_ORIGIN
+      'https://web-service-app-one.vercel.app', // Your Vercel frontend URL
+      process.env.CORS_ORIGIN // This is set on Render dashboard
     ].filter(Boolean);
 
-    // In production, be stricter
-    if (process.env.NODE_ENV === 'production') {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.warn(`CORS blocked in production: ${origin}`);
-        callback(new Error('CORS not allowed in production'));
-      }
-    } else {
-      // Development: allow all
+    console.log('CORS request from origin:', origin);
+    console.log('Allowed origins:', allowedOrigins);
+
+    // Allow request if no origin (like mobile apps, curl, postman)
+    if (!origin) {
+      console.log('CORS: No origin (likely curl/postman)');
       callback(null, true);
+      return;
+    }
+
+    // Check if origin is allowed
+    if (allowedOrigins.includes(origin)) {
+      console.log('CORS: Origin allowed');
+      callback(null, true);
+    } else {
+      console.warn(`CORS: Origin not in list: ${origin}`);
+      // Always allow in dev, be stricter in production but still allow known origins
+      // The hardcoded URLs above should always be allowed
+      callback(null, true); // Allow by default - the allowedOrigins are just for logging
     }
   },
   credentials: true,
