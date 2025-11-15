@@ -21,8 +21,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // CORS - configure via env in production
-const corsOrigin = process.env.CORS_ORIGIN || "*";
-app.use(cors({ origin: corsOrigin }));
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allowed origins
+    const allowedOrigins = [
+      'https://web-service-application.onrender.com',
+      'http://localhost:3000',
+      'http://localhost:5173', // Vite dev server
+      'http://localhost:5000',
+      process.env.CORS_ORIGIN
+    ].filter(Boolean);
+
+    // Allow requests with no origin (mobile apps, Postman, curl, etc.)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.warn(`CORS blocked: ${origin}`);
+      callback(null, true); // Allow for now; change to false if you want strict CORS
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+app.use(cors(corsOptions));
 
 // Logging
 if (process.env.NODE_ENV === "production") {
@@ -45,6 +67,11 @@ pool.connect()
 
 // API routes FIRST so /api/* are handled before static files
 app.use("/api", apiRoutes);
+
+// Handle API 404s
+app.use("/api", (req, res) => {
+  res.status(404).json({ success: false, message: `API route ${req.method} ${req.path} not found` });
+});
 
 // Serve frontend build if available
 const buildPathEnv = process.env.FRONTEND_DIST_PATH;
