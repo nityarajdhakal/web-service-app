@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./TermsPage.css";
 import HamburgerMenu from "../components/HamburgerMenu";
-
-const API_BASE_URL = "http://localhost:5000/api";
+import API_BASE_URL from "../config/api";
 
 const TermsPage = () => {
     const navigate = useNavigate();
@@ -15,6 +14,13 @@ const TermsPage = () => {
             try {
                 const langCode = language === "SE" ? "sv" : "en";
                 const res = await fetch(`${API_BASE_URL}/translations?page=terms&lang=${langCode}`);
+                
+                if (!res.ok) {
+                  const text = await res.text();
+                  console.error("Server responded with error:", res.status, text);
+                  return;
+                }
+
                 const data = await res.json();
                 if (data.success) {
                     setTexts(data.data);

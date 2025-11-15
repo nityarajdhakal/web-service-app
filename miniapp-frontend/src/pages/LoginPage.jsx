@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import HamburgerMenu from "../components/HamburgerMenu";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-
-
-const API_BASE_URL = "http://localhost:5000/api";
+import API_BASE_URL from "../config/api";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -22,6 +20,13 @@ const LoginPage = () => {
         
         const langCode = language === "SE" ? "sv" : "en";
         const res = await fetch(`${API_BASE_URL}/translations?page=login&lang=${langCode}`);
+        
+        if (!res.ok) {
+          const text = await res.text();
+          console.error("Server responded with error:", res.status, text);
+          return;
+        }
+
         const data = await res.json();
         if (data.success) {
           setTexts(data.data);
@@ -49,6 +54,13 @@ const LoginPage = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
+
+      if (!response.ok) {
+        const text = await response.text();
+        console.error("Server responded with error:", response.status, text);
+        setError("Server error: " + response.status);
+        return;
+      }
 
       const data = await response.json();
 
