@@ -23,34 +23,43 @@ app.use(express.urlencoded({ extended: true }));
 // CORS - configure via env in production
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allowed origins
+    // Allowed origins - always includes localhost for dev and configured origin for prod
     const allowedOrigins = [
-      'https://web-service-application.onrender.com',
       'http://localhost:3000',
       'http://localhost:5173', // Vite dev server
       'http://localhost:5000',
+      'http://localhost',
+      'https://web-service-application.onrender.com',
       process.env.CORS_ORIGIN
     ].filter(Boolean);
 
-    // Allow requests with no origin (mobile apps, Postman, curl, etc.)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
+    // In production, be stricter
+    if (process.env.NODE_ENV === 'production') {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.warn(`CORS blocked in production: ${origin}`);
+        callback(new Error('CORS not allowed in production'));
+      }
     } else {
-      console.warn(`CORS blocked: ${origin}`);
-      callback(null, true); // Allow for now; change to false if you want strict CORS
+      // Development: allow all
+      callback(null, true);
     }
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  maxAge: 3600 // Cache preflight requests for 1 hour
 };
 app.use(cors(corsOptions));
 
 // Logging
 if (process.env.NODE_ENV === "production") {
   app.use(morgan("combined"));
+  console.log('🚀 Running in PRODUCTION mode');
 } else {
   app.use(morgan("dev"));
+  console.log('🔧 Running in DEVELOPMENT mode');
 }
 
 // Rate limiter
