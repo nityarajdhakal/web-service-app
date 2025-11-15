@@ -35,8 +35,15 @@ function App() {
           } 
         />
         
-        <Route path="/" element={<Navigate to="/home" />} />
-        {/* Any other path will redirect to the login page */}
+        {/* Root path redirects to login or home depending on auth status */}
+        <Route 
+          path="/" 
+          element={
+            localStorage.getItem('token') ? <Navigate to="/home" /> : <Navigate to="/login" />
+          } 
+        />
+        
+        {/* Any other path redirects to login */}
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>

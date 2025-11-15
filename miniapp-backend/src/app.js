@@ -78,29 +78,37 @@ const buildPathEnv = process.env.FRONTEND_DIST_PATH;
 const defaultBuildPath = path.join(__dirname, "..", "miniapp-frontend", "dist");
 const buildPath = buildPathEnv ? path.resolve(buildPathEnv) : defaultBuildPath;
 
+console.log("Frontend build path:", buildPath);
+console.log("Frontend build exists:", fs.existsSync(buildPath));
+
 if (fs.existsSync(buildPath)) {
   // Serve static files from frontend build
-  app.use(express.static(buildPath));
+  app.use(express.static(buildPath, { 
+    maxAge: '1h', 
+    etag: false 
+  }));
 
   // Catch-all: serve index.html for client-side routing
   // This must come AFTER express.static() and AFTER API routes
   app.get("*", (req, res) => {
-    res.sendFile(path.join(buildPath, "index.html"));
+    const indexPath = path.join(buildPath, "index.html");
+    res.sendFile(indexPath, (err) => {
+      if (err) {
+        console.error("Error serving index.html:", err);
+        res.status(500).json({ success: false, message: "Error serving frontend" });
+      }
+    });
   });
 } else {
   // Frontend not built — respond with helpful message
+  console.error("Frontend build not found at:", buildPath);
   app.get("*", (req, res) => {
     res.status(503).json({ 
       success: false, 
-      message: "Frontend not found. Build the frontend and place the files in the configured dist path." 
+      message: `Frontend not found at ${buildPath}. Build the frontend and deploy it.` 
     });
   });
 }
-
-// Basic health-check
-app.get("/", (req, res) => {
-  res.send("Mini-App Backend is running!");
-});
 
 // Error handler
 app.use((err, req, res, next) => {
