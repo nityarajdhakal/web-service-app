@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
+<<<<<<< HEAD
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import API_BASE_URL from "../config/api";
 
 const navLinks = ["Home", "Order", "Our Customers", "About Us", "Contact Us"];
 
+=======
+import HamburgerMenu from "../components/HamburgerMenu";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import API_BASE_URL from "../config/api";
+
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 const LoginPage = () => {
   const navigate = useNavigate();
   const [language, setLanguage] = useState("EN");
@@ -78,6 +85,7 @@ const LoginPage = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="login-page">
       <header className="login-header">
         <div className="login-logo">
@@ -174,6 +182,54 @@ const LoginPage = () => {
   </div>
 </footer>
 
+=======
+    <div className="login-page-container">
+      <HamburgerMenu texts={texts} page="login" />
+      
+      <div className="language-toggle">
+        <img
+          src="https://storage.123fakturere.no/public/flags/GB.png"
+          alt="English"
+          onClick={() => setLanguage("EN")}
+          className={language === "EN" ? "active-flag" : ""}
+        />
+        <img
+          src="https://storage.123fakturere.no/public/flags/SE.png"
+          alt="Swedish"
+          onClick={() => setLanguage("SE")}
+          className={language === "SE" ? "active-flag" : ""}
+        />
+      </div>
+
+      <div className="login-box">
+        <h2>{texts.loginTitle || 'Login'}</h2>
+        <form onSubmit={handleLogin}>
+          <div className="input-group">
+            <input
+              type="email"
+              placeholder={texts.emailPlaceholder || 'Email'}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder={texts.passwordPlaceholder || 'Password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
+  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+</span>
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          <button type="submit">{texts.loginButton || 'Login'}</button>
+        </form>
+      </div>
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
     </div>
   );
 };

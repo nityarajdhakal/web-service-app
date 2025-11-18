@@ -137,6 +137,7 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+<<<<<<< HEAD
 
 # Docker
 *.log
@@ -166,3 +167,5 @@ miniapp-frontend/dist/
 miniapp-frontend/build/
 miniapp-backend/dist/
 miniapp-backend/build/
+=======
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105

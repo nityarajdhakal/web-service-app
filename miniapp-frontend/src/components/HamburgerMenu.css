@@ -6,12 +6,17 @@
   display: flex;
   align-items: center;
   gap: 15px; 
+<<<<<<< HEAD
   z-index: 100;
+=======
+  z-index: 20;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .diamond-logo {
   width: 40px;
   height: auto;
+<<<<<<< HEAD
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
@@ -32,12 +37,22 @@
 
 .hamburger:active {
   transform: scale(0.95);
+=======
+}
+
+.hamburger {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  user-select: none;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .menu {
   display: none;
   flex-direction: column;
   position: absolute;
+<<<<<<< HEAD
   top: 55px;
   left: 0;
   background-color: rgba(0, 0, 0, 0.92);
@@ -46,10 +61,19 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   min-width: 180px;
   backdrop-filter: blur(10px);
+=======
+  top: 50px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .menu.open {
   display: flex;
+<<<<<<< HEAD
   animation: menuSlideIn 0.2s ease;
 }
 
@@ -78,21 +102,31 @@
 .menu button:hover {
   color: #3498db;
   background-color: rgba(52, 152, 219, 0.1);
+=======
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .menu a,
 .menu a:visited {
   color: white;
   text-decoration: none;
+<<<<<<< HEAD
   padding: 10px 20px;
   white-space: nowrap;
   transition: all 0.2s;
   display: block;
   font-size: 15px;
+=======
+  padding: 8px 0;
+  white-space: nowrap;
+  transition: color 0.2s;
+  display: block;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .menu a:hover {
   color: #3498db;
+<<<<<<< HEAD
   background-color: rgba(52, 152, 219, 0.1);
 }
 
@@ -122,5 +156,7 @@
     padding: 9px 16px;
     font-size: 14px;
   }
+=======
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 

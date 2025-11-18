@@ -1,14 +1,20 @@
 /* Main Container */
 .pricelist-page-container {
   min-height: 100vh;
+<<<<<<< HEAD
   background-color: #f0f2f5;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+=======
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   display: flex;
   flex-direction: column;
 }
 
 /* Blue Header Bar */
 .pricelist-header {
+<<<<<<< HEAD
   background: #1e88e5;
   color: white;
   padding: 12px 20px;
@@ -16,6 +22,15 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+=======
+  background-color: #3498db;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   position: sticky;
   top: 0;
   z-index: 100;
@@ -44,6 +59,7 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
+<<<<<<< HEAD
   padding: 4px 10px;
   border-radius: 6px;
   transition: background-color 0.2s;
@@ -174,6 +190,36 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+=======
+}
+
+.language-text {
+  font-size: 0.95em;
+  color: white;
+}
+
+.header-flag {
+  width: 30px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.header-flag:hover {
+  transform: scale(1.1);
+}
+
+/* Main Content Area */
+.pricelist-main-content {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 /* Controls Section */
@@ -181,6 +227,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD
   margin-bottom: 25px;
   flex-wrap: wrap;
   gap: 18px;
@@ -188,24 +235,38 @@
   border-radius: 18px;
   padding: 20px;
   box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+=======
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .search-bars {
   display: flex;
   gap: 15px;
   flex: 1;
+<<<<<<< HEAD
   min-width: 320px;
+=======
+  min-width: 300px;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .search-bar {
   position: relative;
   flex: 1;
+<<<<<<< HEAD
   max-width: 320px;
+=======
+  max-width: 300px;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .search-bar input {
   width: 100%;
   padding: 10px 40px 10px 15px;
+<<<<<<< HEAD
   border: 1px solid #d1d5db;
   border-radius: 6px;
   font-size: 14px;
@@ -223,16 +284,27 @@
   border-color: #1e88e5;
   outline: none;
   box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.1);
+=======
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95em;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .search-bar input:disabled {
   cursor: not-allowed;
+<<<<<<< HEAD
   opacity: 0.5;
   background-color: #f9fafb;
 }
 
 .search-bar input::placeholder {
   color: #9ca3af;
+=======
+  opacity: 0.7;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .search-bar svg {
@@ -241,12 +313,19 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+<<<<<<< HEAD
   color: #1e88e5;
+=======
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .action-buttons {
   display: flex;
+<<<<<<< HEAD
   gap: 12px;
+=======
+  gap: 10px;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .action-btn {
@@ -258,7 +337,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+<<<<<<< HEAD
   transition: all 0.2s ease;
+=======
+  transition: transform 0.2s, box-shadow 0.2s;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -267,6 +350,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+<<<<<<< HEAD
 .action-btn:active {
   transform: scale(0.98);
 }
@@ -291,18 +375,37 @@
   background: #2563eb;
 }
 
+=======
+.new-product-btn {
+  background-color: #27ae60;
+  color: white;
+}
+
+.print-btn,
+.advanced-btn {
+  background-color: #5dade2;
+  color: white;
+}
+
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 /* Table Container */
 .table-container {
   width: 100%;
   overflow: hidden;
+<<<<<<< HEAD
   background: white;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+=======
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .table-wrapper {
   overflow-x: auto;
   overflow-y: auto;
+<<<<<<< HEAD
   max-height: calc(100vh - 240px);
 }
 
@@ -322,6 +425,9 @@
 
 .table-wrapper::-webkit-scrollbar-thumb:hover {
   background: #9ca3af;
+=======
+  max-height: calc(100vh - 300px);
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .pricelist-table {
@@ -331,24 +437,38 @@
 }
 
 .pricelist-table thead {
+<<<<<<< HEAD
   background: #f9fafb;
+=======
+  background-color: #f8f9fa;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
 .pricelist-table th {
+<<<<<<< HEAD
   padding: 12px 16px;
   text-align: left;
   font-weight: 600;
   font-size: 13px;
   color: #374151;
   border-bottom: 1px solid #e5e7eb;
+=======
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9em;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   white-space: nowrap;
   position: relative;
 }
 
 .pricelist-table th .sort-icon {
+<<<<<<< HEAD
   margin-left: 4px;
   opacity: 0.3;
   vertical-align: middle;
@@ -372,6 +492,21 @@
 
 .pricelist-table tbody tr:hover {
   background-color: #f9fafb;
+=======
+  margin-left: 5px;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+
+.pricelist-table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #000;
+}
+
+.pricelist-table tbody tr:hover {
+  background-color: #f8f9fa;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .pricelist-table tbody tr:last-child td {
@@ -381,6 +516,7 @@
 .pricelist-table input {
   width: 100%;
   border: 1px solid transparent;
+<<<<<<< HEAD
   padding: 6px 8px;
   border-radius: 4px;
   font-size: 14px;
@@ -393,10 +529,25 @@
 .pricelist-table input:hover {
   background-color: #f9fafb;
   border-color: #e5e7eb;
+=======
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 0.95em;
+  background-color: transparent;
+  color: #000;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.pricelist-table input:hover {
+  background-color: #f9f9f9;
+  border-color: #ddd;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .pricelist-table input:focus {
   outline: none;
+<<<<<<< HEAD
   border-color: #1e88e5;
   background-color: white;
   box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.1);
@@ -404,10 +555,16 @@
 
 .pricelist-table input[type="number"] {
   text-align: right;
+=======
+  border-color: #3498db;
+  background-color: white;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .actions-col {
   text-align: center;
+<<<<<<< HEAD
   width: 60px;
 }
 
@@ -415,23 +572,42 @@
   color: #95a5a6;
   cursor: pointer;
   transition: all 0.2s ease;
+=======
+  width: 50px;
+}
+
+.actions-icon {
+  color: #777;
+  cursor: pointer;
+  transition: color 0.2s;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .actions-icon:hover {
   color: #3498db;
+<<<<<<< HEAD
   transform: scale(1.1);
+=======
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 .no-products {
   text-align: center;
+<<<<<<< HEAD
   padding: 60px 20px;
   color: #95a5a6;
   font-style: italic;
   font-size: 1.05em;
+=======
+  padding: 40px;
+  color: #999;
+  font-style: italic;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 }
 
 /* Responsive Styles */
 
+<<<<<<< HEAD
 /* Desktop Large */
 @media (min-width: 1441px) {
   .pricelist-main-content {
@@ -477,6 +653,13 @@
 
   .pricelist-main-content {
     padding: 0;
+=======
+/* Tablet Landscape (1024px and below) */
+@media (max-width: 1024px) {
+  .pricelist-main-content {
+    margin: 15px;
+    padding: 15px;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .pricelist-controls {
@@ -487,7 +670,10 @@
   .search-bars {
     width: 100%;
     max-width: none;
+<<<<<<< HEAD
     min-width: 0;
+=======
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .search-bar {
@@ -498,13 +684,20 @@
     justify-content: flex-start;
   }
 
+<<<<<<< HEAD
   /* Hide some columns on tablet landscape */
   .unit-col,
   .desc-col {
+=======
+  /* Hide some columns on tablet */
+  .in-price-col,
+  .unit-col {
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
     display: none;
   }
 
   .table-wrapper {
+<<<<<<< HEAD
     max-height: calc(100vh - 240px);
   }
 
@@ -512,17 +705,25 @@
   .pricelist-table td {
     padding: 11px 14px;
     font-size: 13px;
+=======
+    max-height: calc(100vh - 280px);
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 }
 
 /* Tablet Portrait / Mobile Landscape (768px and below) */
 @media (max-width: 768px) {
   .pricelist-header {
+<<<<<<< HEAD
     padding: 11px 18px;
+=======
+    padding: 12px 15px;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .header-title {
     font-size: 1.2em;
+<<<<<<< HEAD
     font-weight: 500;
   }
 
@@ -545,18 +746,29 @@
 
   .pricelist-controls {
     margin-bottom: 18px;
+=======
+  }
+
+  .pricelist-main-content {
+    margin: 10px;
+    padding: 12px;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .search-bars {
     flex-direction: column;
     gap: 10px;
+<<<<<<< HEAD
     min-width: 0;
+=======
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .search-bar {
     max-width: none;
   }
 
+<<<<<<< HEAD
   .search-bar input {
     padding: 10px 38px 10px 14px;
   }
@@ -569,11 +781,18 @@
   /* Hide some columns on tablet */
   .in-price-col,
   .unit-col,
+=======
+  /* Hide more columns */
+  .in-price-col,
+  .unit-col,
+  .stock-col,
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   .desc-col {
     display: none;
   }
 
   .table-wrapper {
+<<<<<<< HEAD
     max-height: calc(100vh - 220px);
   }
 
@@ -581,11 +800,15 @@
   .pricelist-table td {
     padding: 10px 14px;
     font-size: 13px;
+=======
+    max-height: calc(100vh - 250px);
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 }
 
 /* Mobile Portrait (600px and below) */
 @media (max-width: 600px) {
+<<<<<<< HEAD
   .pricelist-layout {
     padding: 12px;
   }
@@ -596,6 +819,10 @@
 
   .pricelist-header {
     padding: 10px 15px;
+=======
+  .pricelist-header {
+    padding: 10px 12px;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .header-left {
@@ -604,7 +831,10 @@
 
   .header-title {
     font-size: 1.1em;
+<<<<<<< HEAD
     font-weight: 500;
+=======
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .language-toggle-header {
@@ -612,6 +842,7 @@
   }
 
   .language-text {
+<<<<<<< HEAD
     font-size: 12px;
   }
 
@@ -622,12 +853,26 @@
 
   .pricelist-main-content {
     padding: 15px;
+=======
+    font-size: 0.85em;
+  }
+
+  .header-flag {
+    width: 25px;
+    height: 17px;
+  }
+
+  .pricelist-main-content {
+    margin: 8px;
+    padding: 10px;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .pricelist-controls {
     margin-bottom: 15px;
   }
 
+<<<<<<< HEAD
   .search-bar input {
     padding: 9px 36px 9px 12px;
     font-size: 14px;
@@ -636,6 +881,11 @@
   .action-btn {
     width: 38px;
     height: 38px;
+=======
+  .action-btn {
+    width: 36px;
+    height: 36px;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .action-btn svg {
@@ -643,11 +893,15 @@
     height: 18px;
   }
 
+<<<<<<< HEAD
   .table-container {
     border-radius: 6px;
   }
 
   /* Mobile: Simpler two-column card layout like reference */
+=======
+  /* Mobile: Stack table vertically */
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   .pricelist-table,
   .pricelist-table thead,
   .pricelist-table tbody,
@@ -662,21 +916,38 @@
   }
 
   .pricelist-table tr {
+<<<<<<< HEAD
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     margin-bottom: 12px;
     padding: 12px;
     background-color: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+=======
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .pricelist-table td {
     border: none;
+<<<<<<< HEAD
     padding: 8px 0;
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+=======
+    border-bottom: 1px dotted #e0e0e0;
+    padding: 10px;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .pricelist-table td:last-child {
@@ -685,6 +956,7 @@
 
   .pricelist-table td::before {
     content: attr(data-label);
+<<<<<<< HEAD
     font-weight: 600;
     color: #6b7280;
     font-size: 13px;
@@ -705,6 +977,33 @@
 
   .actions-col::before {
     content: "";
+=======
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+  }
+
+  .pricelist-table input {
+    width: 100%;
+    text-align: right;
+    padding: 6px 8px;
+  }
+
+  .actions-col {
+    text-align: right;
+    padding-left: 50%;
+  }
+
+  .actions-col::before {
+    content: "Actions";
+    position: absolute;
+    left: 10px;
+    font-weight: 600;
+    color: #555;
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
   }
 
   .table-wrapper {
@@ -713,6 +1012,7 @@
   }
 }
 
+<<<<<<< HEAD
 @media (max-width: 400px) {
   .pricelist-main-content {
     padding: 12px;
@@ -733,6 +1033,8 @@
   }
 }
 
+=======
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 /* Adjust HamburgerMenu positioning in header */
 .pricelist-header .top-left-container {
   position: relative;

@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./TermsPage.css";
+<<<<<<< HEAD
 import API_BASE_URL from "../config/api";
 
 const navLinks = ["Home", "Order", "Our Customers", "About Us", "Contact Us"];
 
+=======
+import HamburgerMenu from "../components/HamburgerMenu";
+import API_BASE_URL from "../config/api";
+
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 const TermsPage = () => {
     const navigate = useNavigate();
     const [language, setLanguage] = useState("EN");
@@ -37,6 +43,7 @@ const TermsPage = () => {
         navigate(-1);
     };
 
+<<<<<<< HEAD
     const paragraphs = (texts.content || "").split("\n").filter((p) => p.trim().length > 0);
 
     return (
@@ -57,10 +64,32 @@ const TermsPage = () => {
                       src={language === 'EN' ? 'https://storage.123fakturere.no/public/flags/GB.png' : 'https://storage.123fakturere.no/public/flags/SE.png'}
                       alt={language === 'EN' ? 'English' : 'Swedish'}
                       className="terms-flag"
+=======
+    return (
+        <div className="terms-page-container new-terms-style">
+            <header className="terms-header">
+                
+                <HamburgerMenu texts={texts} page="terms" />
+                
+
+                <nav className="terms-nav">
+                    <a href="#">Home</a>
+                    <a href="#">Order</a>
+                    <a href="#">Our Customers</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact Us</a>
+                </nav>
+                <div className="terms-language-toggle" onClick={() => setLanguage(language === 'EN' ? 'SE' : 'EN')} style={{cursor: 'pointer'}}>
+                    <span>{language === 'EN' ? 'English' : 'Svenska'}</span>
+                    <img 
+                      src={language === 'EN' ? 'https://storage.123fakturere.no/public/flags/GB.png' : 'https://storage.123fakturere.no/public/flags/SE.png'} 
+                      alt="Language Flag"
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
                     />
                 </div>
             </header>
 
+<<<<<<< HEAD
             <main className="terms-body">
                 <section className="terms-card">
                     <h1>{texts.title || "Terms"}</h1>
@@ -80,6 +109,17 @@ const TermsPage = () => {
             </main>
 
             
+=======
+            <main className="terms-main-content">
+                <h1>{texts.title || "Terms"}</h1>
+                <button onClick={handleGoBack} className="close-button">
+                    {texts.closeButton || "Close and Go Back"}
+                </button>
+                <div className="terms-content-box">
+                    <p>{texts.content}</p>
+                </div>
+            </main>
+>>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
         </div>
     );
 };
