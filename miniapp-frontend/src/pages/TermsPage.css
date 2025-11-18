@@ -1,0 +1,215 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.terms-page {
+    min-height: 100vh;
+    background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.terms-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+    backdrop-filter: blur(4px);
+    color: white;
+}
+
+.terms-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.terms-logo img {
+    width: 32px;
+    height: 32px;
+}
+
+.terms-nav {
+    display: flex;
+    gap: 24px;
+    font-size: 15px;
+}
+
+.terms-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.terms-nav a:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+.terms-language {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.terms-language:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.terms-language span {
+    color: white;
+    font-size: 14px;
+}
+
+.terms-flag {
+    width: 32px;
+    height: 22px;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s;
+}
+
+.terms-language:hover .terms-flag {
+    transform: scale(1.05);
+}
+
+.terms-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.terms-card {
+    width: 100%;
+    max-width: 780px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 24px;
+    padding: 40px 50px;
+    color: #1f2937;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+}
+
+.terms-card h1 {
+    font-size: 34px;
+    margin-bottom: 24px;
+    color: #1f2937;
+}
+
+.terms-content-box {
+    text-align: left;
+    max-height: 55vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.terms-content-box p {
+    line-height: 1.7;
+    margin-bottom: 16px;
+    color: #374151;
+    font-size: 15px;
+}
+
+.terms-content-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terms-content-box::-webkit-scrollbar-thumb {
+    background: #cbd5f5;
+    border-radius: 4px;
+}
+
+.close-button {
+    margin-top: 28px;
+    background: #17904a;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 36px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.close-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(23, 144, 74, 0.3);
+}
+
+.terms-footer {
+    text-align: center;
+    padding: 15px 20px 25px;
+    font-size: 13px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 1024px) {
+    .terms-nav {
+        gap: 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .terms-top-bar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .terms-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .terms-card {
+        padding: 35px;
+    }
+}
+
+@media (max-width: 560px) {
+    .terms-nav {
+        display: none;
+    }
+
+    .terms-language {
+        gap: 8px;
+        padding: 3px 8px;
+    }
+
+    .terms-language span {
+        font-size: 13px;
+    }
+
+    .terms-flag {
+        width: 28px;
+        height: 19px;
+    }
+
+    .terms-card {
+        padding: 28px 22px;
+    }
+
+    .terms-card h1 {
+        font-size: 28px;
+    }
+
+    .terms-content-box {
+        max-height: 50vh;
+    }
+}

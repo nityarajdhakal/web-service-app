@@ -1,0 +1,741 @@
+/* Main Container */
+.pricelist-page-container {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Blue Header Bar */
+.pricelist-header {
+  background: #1e88e5;
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: white;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.language-toggle-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.language-toggle-header:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.language-text {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header-flag {
+  width: 32px;
+  height: 22px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+}
+
+.language-toggle-header:hover .header-flag {
+  transform: scale(1.05);
+}
+
+/* Main Content Area */
+.pricelist-layout {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.pricelist-sidebar {
+  width: 240px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #1e88e5;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.sidebar-profile p {
+  margin: 0;
+  font-weight: 600;
+  color: #111827;
+}
+
+.sidebar-profile span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.sidebar-links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+}
+
+.sidebar-link {
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  font-size: 14px;
+  color: #4b5563;
+  cursor: pointer;
+  text-align: left;
+  border-left: 3px solid transparent;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.sidebar-link svg {
+  font-size: 16px;
+}
+
+.sidebar-link.active {
+  background: #e3f2fd;
+  color: #1e88e5;
+  border-left-color: #1e88e5;
+  font-weight: 600;
+}
+
+.sidebar-footer {
+  border-top: 1px solid #e5e7eb;
+  padding: 16px 0;
+}
+
+.sidebar-footer .sidebar-link {
+  color: #ef4444;
+  border-left: none;
+}
+
+.sidebar-footer .sidebar-link svg {
+  color: #ef4444;
+}
+
+.pricelist-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Controls Section */
+.pricelist-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 18px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+.search-bars {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+  min-width: 320px;
+}
+
+.search-bar {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  color: #374151;
+}
+
+.search-bar input:hover:not(:disabled) {
+  border-color: #9ca3af;
+}
+
+.search-bar input:focus {
+  border-color: #1e88e5;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.1);
+}
+
+.search-bar input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: #f9fafb;
+}
+
+.search-bar input::placeholder {
+  color: #9ca3af;
+}
+
+.search-bar svg {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #1e88e5;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.action-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.action-btn:active {
+  transform: scale(0.98);
+}
+
+.new-product-btn {
+  background: #10b981;
+  color: white;
+}
+
+.new-product-btn:hover {
+  background: #059669;
+}
+
+.print-btn,
+.advanced-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+.print-btn:hover,
+.advanced-btn:hover {
+  background: #2563eb;
+}
+
+/* Table Container */
+.table-container {
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 240px);
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.pricelist-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.pricelist-table thead {
+  background: #f9fafb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.pricelist-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+  position: relative;
+}
+
+.pricelist-table th .sort-icon {
+  margin-left: 4px;
+  opacity: 0.3;
+  vertical-align: middle;
+  transition: opacity 0.2s;
+}
+
+.pricelist-table th:hover .sort-icon {
+  opacity: 0.6;
+}
+
+.pricelist-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.pricelist-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.pricelist-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.pricelist-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pricelist-table input {
+  width: 100%;
+  border: 1px solid transparent;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: transparent;
+  color: #1f2937;
+  box-sizing: border-box;
+  transition: all 0.15s ease;
+}
+
+.pricelist-table input:hover {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+.pricelist-table input:focus {
+  outline: none;
+  border-color: #1e88e5;
+  background-color: white;
+  box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.1);
+}
+
+.pricelist-table input[type="number"] {
+  text-align: right;
+}
+
+.actions-col {
+  text-align: center;
+  width: 60px;
+}
+
+.actions-icon {
+  color: #95a5a6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actions-icon:hover {
+  color: #3498db;
+  transform: scale(1.1);
+}
+
+.no-products {
+  text-align: center;
+  padding: 60px 20px;
+  color: #95a5a6;
+  font-style: italic;
+  font-size: 1.05em;
+}
+
+/* Responsive Styles */
+
+/* Desktop Large */
+@media (min-width: 1441px) {
+  .pricelist-main-content {
+    margin: 30px 50px;
+    padding: 30px 40px;
+  }
+}
+
+/* Tablet Landscape (1024px and below) */
+@media (max-width: 1024px) {
+  .pricelist-layout {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .pricelist-sidebar {
+    width: 100%;
+  }
+
+  .sidebar-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .sidebar-link {
+    border-left: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    flex: 1 1 140px;
+    justify-content: center;
+  }
+
+  .sidebar-link.active {
+    border-color: #1e88e5;
+  }
+
+  .sidebar-footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 0 16px 16px;
+  }
+
+  .pricelist-main-content {
+    padding: 0;
+  }
+
+  .pricelist-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bars {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .search-bar {
+    max-width: none;
+  }
+
+  .action-buttons {
+    justify-content: flex-start;
+  }
+
+  /* Hide some columns on tablet landscape */
+  .unit-col,
+  .desc-col {
+    display: none;
+  }
+
+  .table-wrapper {
+    max-height: calc(100vh - 240px);
+  }
+
+  .pricelist-table th,
+  .pricelist-table td {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+}
+
+/* Tablet Portrait / Mobile Landscape (768px and below) */
+@media (max-width: 768px) {
+  .pricelist-header {
+    padding: 11px 18px;
+  }
+
+  .header-title {
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+
+  .language-toggle-header {
+    gap: 8px;
+  }
+
+  .language-text {
+    font-size: 13px;
+  }
+
+  .header-flag {
+    width: 28px;
+    height: 19px;
+  }
+
+  .pricelist-main-content {
+    padding: 18px;
+  }
+
+  .pricelist-controls {
+    margin-bottom: 18px;
+  }
+
+  .search-bars {
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .search-bar {
+    max-width: none;
+  }
+
+  .search-bar input {
+    padding: 10px 38px 10px 14px;
+  }
+
+  .action-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Hide some columns on tablet */
+  .in-price-col,
+  .unit-col,
+  .desc-col {
+    display: none;
+  }
+
+  .table-wrapper {
+    max-height: calc(100vh - 220px);
+  }
+
+  .pricelist-table th,
+  .pricelist-table td {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile Portrait (600px and below) */
+@media (max-width: 600px) {
+  .pricelist-layout {
+    padding: 12px;
+  }
+
+  .pricelist-sidebar {
+    display: none;
+  }
+
+  .pricelist-header {
+    padding: 10px 15px;
+  }
+
+  .header-left {
+    gap: 10px;
+  }
+
+  .header-title {
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+
+  .language-toggle-header {
+    gap: 8px;
+  }
+
+  .language-text {
+    font-size: 12px;
+  }
+
+  .header-flag {
+    width: 26px;
+    height: 18px;
+  }
+
+  .pricelist-main-content {
+    padding: 15px;
+  }
+
+  .pricelist-controls {
+    margin-bottom: 15px;
+  }
+
+  .search-bar input {
+    padding: 9px 36px 9px 12px;
+    font-size: 14px;
+  }
+
+  .action-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .action-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .table-container {
+    border-radius: 6px;
+  }
+
+  /* Mobile: Simpler two-column card layout like reference */
+  .pricelist-table,
+  .pricelist-table thead,
+  .pricelist-table tbody,
+  .pricelist-table th,
+  .pricelist-table td,
+  .pricelist-table tr {
+    display: block;
+  }
+
+  .pricelist-table thead {
+    display: none;
+  }
+
+  .pricelist-table tr {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 12px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .pricelist-table td {
+    border: none;
+    padding: 8px 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pricelist-table td:last-child {
+    border-bottom: none;
+  }
+
+  .pricelist-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 13px;
+    flex: 0 0 40%;
+  }
+
+  .pricelist-table input {
+    width: auto;
+    flex: 1;
+    text-align: right;
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+
+  .actions-col {
+    justify-content: flex-end;
+  }
+
+  .actions-col::before {
+    content: "";
+  }
+
+  .table-wrapper {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 400px) {
+  .pricelist-main-content {
+    padding: 12px;
+  }
+
+  .header-title {
+    font-size: 1em;
+  }
+
+  .action-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .pricelist-table tr {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+/* Adjust HamburgerMenu positioning in header */
+.pricelist-header .top-left-container {
+  position: relative;
+  top: 0;
+  left: 0;
+}
