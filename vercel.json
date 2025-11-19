@@ -1,5 +1,5 @@
 {
-  "buildCommand": "bash -c 'cd miniapp-frontend && npm ci && npm run build'",
+  "buildCommand": "sh vercel-build.sh",
   "outputDirectory": "miniapp-frontend/dist",
   "rewrites": [
     { 
