@@ -83,7 +83,6 @@ pool.connect()
   .then(() => console.log("Connected to PostgreSQL database"))
   .catch((err) => console.error("Database connection error:", err));
 
-<<<<<<< HEAD
 // Health check endpoint (for Docker and monitoring)
 app.get("/health", async (req, res) => {
   try {
@@ -106,8 +105,6 @@ app.get("/health", async (req, res) => {
   }
 });
 
-=======
->>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 // API routes FIRST so /api/* are handled before static files
 app.use("/api", apiRoutes);
 

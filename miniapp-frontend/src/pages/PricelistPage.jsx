@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./PricelistPage.css";
 import HamburgerMenu from "../components/HamburgerMenu";
 import { Search, Plus, Printer, SlidersHorizontal, ChevronDown, MoreVertical } from "lucide-react";
-<<<<<<< HEAD
 import {
   FiFileText,
   FiUsers,
@@ -28,10 +27,6 @@ const sidebarLinks = [
   { label: "Offer", icon: <FiInbox /> }
 ];
 
-=======
-import API_BASE_URL from "../config/api";
-
->>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
 const PricelistPage = () => {
   const navigate = useNavigate();
   const [language, setLanguage] = useState("EN");
@@ -52,14 +47,10 @@ const PricelistPage = () => {
         }
 
         const data = await res.json();
-<<<<<<< HEAD
         if (data.success) {
           console.log('Pricelist translations loaded:', data.data);
           setTexts(data.data);
         }
-=======
-        if (data.success) setTexts(data.data);
->>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
       } catch (err) {
         console.error("Error fetching translations:", err);
       }
@@ -153,7 +144,6 @@ const PricelistPage = () => {
       <header className="pricelist-header">
         <div className="header-left">
           <HamburgerMenu texts={texts} page="pricelist" />
-<<<<<<< HEAD
           <h1 className="header-title">{texts.title || 'Pricelist'}</h1>
         </div>
         <div className="header-right">
@@ -162,17 +152,6 @@ const PricelistPage = () => {
             <img 
               src={language === "EN" ? "https://storage.123fakturere.no/public/flags/GB.png" : "https://storage.123fakturere.no/public/flags/SE.png"}
               alt={language === "EN" ? "English" : "Swedish"} 
-=======
-          <h1 className="header-title">Pricelist</h1>
-        </div>
-        <div className="header-right">
-          <div className="language-toggle-header">
-            <span className="language-text">{language === "EN" ? "English" : "Svenska"}</span>
-            <img 
-              src={language === "EN" ? "https://storage.123fakturere.no/public/flags/GB.png" : "https://storage.123fakturere.no/public/flags/SE.png"} 
-              alt={language} 
-              onClick={() => setLanguage(language === "EN" ? "SE" : "EN")}
->>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
               className="header-flag"
             />
           </div>
@@ -180,7 +159,6 @@ const PricelistPage = () => {
       </header>
 
       
-<<<<<<< HEAD
       <div className="pricelist-layout">
         <aside className="pricelist-sidebar">
           <div className="sidebar-profile">
@@ -331,130 +309,6 @@ const PricelistPage = () => {
                 </tbody>
               </table>
             </div>
-=======
-      <div className="pricelist-main-content">
-        
-        <div className="pricelist-controls">
-          <div className="search-bars">
-            <div className="search-bar">
-              <input type="text" placeholder="Search Article No..." disabled />
-              <Search size={20} color="#777" />
-            </div>
-            <div className="search-bar">
-              <input type="text" placeholder="Search Product..." disabled />
-              <Search size={20} color="#777" />
-            </div>
-          </div>
-          <div className="action-buttons">
-            <button className="action-btn new-product-btn" title="New Product">
-              <Plus size={20} />
-            </button>
-            <button className="action-btn print-btn" title="Print List">
-              <Printer size={20} />
-            </button>
-            <button className="action-btn advanced-btn" title="Advanced mode">
-              <SlidersHorizontal size={20} />
-            </button>
-          </div>
-        </div>
-
-        
-        <div className="table-container">
-          <div className="table-wrapper">
-            <table className="pricelist-table">
-              <thead>
-                <tr>
-                  <th className="article-col">
-                    Article No.
-                    <ChevronDown size={16} className="sort-icon" />
-                  </th>
-                  <th className="product-col">
-                    Product/Service
-                    <ChevronDown size={16} className="sort-icon" />
-                  </th>
-                  <th className="in-price-col">In Price</th>
-                  <th className="price-col">Price</th>
-                  <th className="unit-col">Unit</th>
-                  <th className="stock-col">In Stock</th>
-                  <th className="desc-col">Description</th>
-                  <th className="actions-col">...</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.length === 0 ? (
-                  <tr>
-                    <td colSpan={8} className="no-products">
-                      No products available.
-                    </td>
-                  </tr>
-                ) : (
-                  products.map(product => (
-                    <tr key={product.id}>
-                      <td data-label="Article No." className="article-col">
-                        <input 
-                          type="text" 
-                          value={product.article_no || ''} 
-                          onChange={(e) => handleInputChange(product.id, 'article_no', e.target.value)} 
-                          onBlur={() => handleUpdateOnBlur(product.id)} 
-                        />
-                      </td>
-                      <td data-label="Product/Service" className="product-col">
-                        <input 
-                          type="text" 
-                          value={product.product_name || ''} 
-                          onChange={(e) => handleInputChange(product.id, 'product_name', e.target.value)} 
-                          onBlur={() => handleUpdateOnBlur(product.id)} 
-                        />
-                      </td>
-                      <td data-label="In Price" className="in-price-col">
-                        <input 
-                          type="number" 
-                          value={product.in_price || ''} 
-                          onChange={(e) => handleInputChange(product.id, 'in_price', e.target.value)} 
-                          onBlur={() => handleUpdateOnBlur(product.id)} 
-                        />
-                      </td>
-                      <td data-label="Price" className="price-col">
-                        <input 
-                          type="number" 
-                          value={product.price || ''} 
-                          onChange={(e) => handleInputChange(product.id, 'price', e.target.value)} 
-                          onBlur={() => handleUpdateOnBlur(product.id)} 
-                        />
-                      </td>
-                      <td data-label="Unit" className="unit-col">
-                        <input 
-                          type="text" 
-                          value={product.unit || ''} 
-                          onChange={(e) => handleInputChange(product.id, 'unit', e.target.value)} 
-                          onBlur={() => handleUpdateOnBlur(product.id)} 
-                        />
-                      </td>
-                      <td data-label="In Stock" className="stock-col">
-                        <input 
-                          type="number" 
-                          value={product.in_stock || ''} 
-                          onChange={(e) => handleInputChange(product.id, 'in_stock', e.target.value)} 
-                          onBlur={() => handleUpdateOnBlur(product.id)} 
-                        />
-                      </td>
-                      <td data-label="Description" className="desc-col">
-                        <input 
-                          type="text" 
-                          value={product.description || ''} 
-                          onChange={(e) => handleInputChange(product.id, 'description', e.target.value)} 
-                          onBlur={() => handleUpdateOnBlur(product.id)} 
-                        />
-                      </td>
-                      <td className="actions-col">
-                        <MoreVertical size={18} className="actions-icon" />
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
->>>>>>> c2af40e68f6200fee22d77768f0fcbc5157a8105
           </div>
         </div>
       </div>
