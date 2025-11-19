@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm install && npm install --prefix miniapp-frontend && npm run build --prefix miniapp-frontend",
-  "outputDirectory": "miniapp-frontend/dist",
+  "buildCommand": "npm ci && npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
     { 
       "source": "/(.*)", 
